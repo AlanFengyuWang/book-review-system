@@ -8,7 +8,6 @@ export const getAllBooks = async () => {
 };
 
 export const addBook = async (book: any) => {
-  console.log(`book = ${JSON.stringify(book)}, url = ${BASE_URL}/add`)
 	const response = await axios.post(`${BASE_URL}/add`, book);
 	return response.data;
 };

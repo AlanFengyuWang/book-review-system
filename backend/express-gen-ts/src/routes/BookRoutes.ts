@@ -19,8 +19,6 @@ async function getAll(_: IReq, res: IRes) {
  */
 async function add(req: IReq<{ book: IBook }>, res: IRes) {
 	const { book } = req.body;
-	console.log("Entered add")
-	console.log(`book = ${JSON.stringify(book)}`)
 	await BookService.addOne(book);
 	return res.status(HttpStatusCodes.CREATED).end();
 }
