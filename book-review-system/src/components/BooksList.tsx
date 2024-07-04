@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
 	List,
 	ListItem,
@@ -6,6 +6,7 @@ import {
 	Typography,
 	Box,
 	Button,
+	CircularProgress,
 } from "@mui/material";
 import { useQuery, useQueryClient } from "react-query";
 import { deleteBook, getAllBooks } from "../services/bookService";
@@ -29,19 +30,23 @@ const BooksList: React.FC = () => {
 	const queryClient = useQueryClient();
 
 	const { data, error, isLoading } = useQuery<Book[]>("books", fetchBooks);
+	const [deletingBook, setDeletingBookId] = useState<number | null>(null);
 
 	const handleDelete = async (id: number) => {
+		setDeletingBookId(id);
 		try {
 			// delete all comments first
 			const allReviews = await getAllReviewsForBook(id);
-      console.log(`allReviews = ${JSON.stringify(allReviews)}`)
+			console.log(`allReviews = ${JSON.stringify(allReviews)}`);
 			for (var review of allReviews?.reviews) {
 				await deleteReview(review.id);
 			}
 			await deleteBook(id);
 			queryClient.invalidateQueries("books"); // Invalidate the books query after deletion
+			setDeletingBookId(null);
 		} catch (err) {
 			console.error("Failed to delete book", err);
+			setDeletingBookId(null);
 		}
 	};
 
@@ -93,7 +98,12 @@ const BooksList: React.FC = () => {
 												handleDelete(book.id)
 											}
 										>
-											Delete
+											{deletingBook === book.id ? (
+												<CircularProgress size={20} />
+											) : (
+												"Delete"
+											)}
+											{/* Delete */}
 										</Button>
 									</Box>
 								}

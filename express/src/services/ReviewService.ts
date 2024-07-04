@@ -3,6 +3,7 @@ import HttpStatusCodes from "@src/common/HttpStatusCodes";
 
 import ReviewRepo from "@src/repos/ReviewRepo";
 import { IReview } from "@src/models/Review";
+import { mapDbToModel } from "@src/util/mappers";
 
 // **** Variables **** //
 
@@ -13,8 +14,9 @@ export const REVIEW_NOT_FOUND_ERR = "Review not found";
 /**
  * Get all reviews for a book.
  */
-function getAllForBook(bookId: number): Promise<IReview[]> {
-	return ReviewRepo.getAllForBook(bookId);
+async function getAllForBook(bookId: number): Promise<IReview[]> {
+	const dbReviews = await ReviewRepo.getAllForBook(bookId);
+	return dbReviews.map(mapDbToModel);
 }
 
 /**
@@ -22,10 +24,13 @@ function getAllForBook(bookId: number): Promise<IReview[]> {
  */
 async function addOne(review: IReview): Promise<void> {
 	// Check if the user has already reviewed this book
-  const existingReviews = await ReviewRepo.getAllForBook(review.bookId);
-  if (existingReviews.some(r => r.userId === review.userId)) {
-    throw new RouteError(HttpStatusCodes.BAD_REQUEST, "User has already reviewed this book");
-  }
+	const existingReviews = await ReviewRepo.getAllForBook(review.bookId);
+	if (existingReviews.some((r) => r.userid === review.userId)) {
+		throw new RouteError(
+			HttpStatusCodes.BAD_REQUEST,
+			"User has already reviewed this book"
+		);
+	}
 	return ReviewRepo.add(review);
 }
 

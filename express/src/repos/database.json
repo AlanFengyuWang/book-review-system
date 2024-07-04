@@ -10,6 +10,18 @@
 			"id": 192906717048,
 			"title": "Game of Throne",
 			"author": "George R. R. Martin"
+		},
+		{
+			"id": 626098444316,
+			"title": "Game of Thrones 2",
+			"author": "Alan",
+			"review": []
+		},
+		{
+			"id": 340428127188,
+			"title": "Game of Thrones 2",
+			"author": "Alan",
+			"review": []
 		}
 	],
 	"reviews": [
@@ -18,13 +30,6 @@
 			"bookId": 192906717048,
 			"text": "This is a great book",
 			"rating": 4.5,
-			"userId": 1
-		},
-		{
-			"id": 118391337721,
-			"bookId": 588672966624,
-			"text": "This is a great book",
-			"rating": 4,
 			"userId": 1
 		}
 	]
