@@ -20,7 +20,7 @@ export default {
 	},
 	Reviews: {
 		Base: "/reviews",
-		GetAllForBook: "/all/:bookId",
+		getAllForBook: "/all/:id",
 		Add: "/add",
 		Update: "/update",
 		Delete: "/delete/:id",

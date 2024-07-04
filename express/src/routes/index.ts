@@ -6,6 +6,8 @@ import User from "@src/models/User";
 import Book from "@src/models/Book";
 import UserRoutes from "./UserRoutes";
 import BookRoutes from "./BookRoutes";
+import ReviewRoutes from "./ReviewRoutes";
+import Review from "@src/models/Review";
 
 // **** Variables **** //
 
@@ -43,7 +45,6 @@ userRouter.delete(
 // Add UserRouter
 apiRouter.use(Paths.Users.Base, userRouter);
 
-
 // ** Add BookRouter ** //
 const bookRouter = Router();
 
@@ -73,6 +74,37 @@ bookRouter.delete(
 
 // Add BookRouter
 apiRouter.use(Paths.Books.Base, bookRouter);
+
+// ** Review Route ** //
+// ** Add ReviewRouter ** //
+const reviewRouter = Router();
+
+// Get all reviews
+reviewRouter.get(Paths.Reviews.getAllForBook, ReviewRoutes.getAllForBook);
+
+// Add one review
+reviewRouter.post(
+	Paths.Reviews.Add,
+	validate(["review", Review.isReview]),
+	ReviewRoutes.add
+);
+
+// Update one review
+reviewRouter.put(
+	Paths.Reviews.Update,
+	validate(["review", Review.isReview]),
+	ReviewRoutes.update
+);
+
+// Delete one review
+reviewRouter.delete(
+	Paths.Reviews.Delete,
+	validate(["id", "number", "params"]),
+	ReviewRoutes.delete
+);
+
+// Add ReviewRouter
+apiRouter.use(Paths.Reviews.Base, reviewRouter);
 
 // **** Export default **** //
 

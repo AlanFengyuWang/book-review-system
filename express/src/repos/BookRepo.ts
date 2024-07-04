@@ -60,7 +60,6 @@ async function update(book: IBook): Promise<void> {
 				...dbBook,
 				title: book.title,
 				author: book.author,
-				reviews: book.reviews,
 			};
 			return orm.saveDb(db);
 		}

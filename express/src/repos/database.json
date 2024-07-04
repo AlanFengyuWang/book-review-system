@@ -1,1 +1,31 @@
-{"users":[],"books":[{"id":811073355330,"title":"Game of Throne","author":"George R. R. Martin","reviews":[]},{"id":412837159191,"title":"Song of Ice and Fire","author":"George R. R. Martin","reviews":[]},{"id":196581925180,"title":"Clash of Kings","author":"George R. R. Martin","reviews":[]}]}
+{
+	"users": [],
+	"books": [
+		{
+			"id": 588672966624,
+			"title": "Song of Ice and Fire",
+			"author": "George R. R. Martin"
+		},
+		{
+			"id": 192906717048,
+			"title": "Game of Throne",
+			"author": "George R. R. Martin"
+		}
+	],
+	"reviews": [
+		{
+			"id": 667944062614,
+			"bookId": 192906717048,
+			"text": "This is a great book",
+			"rating": 4.5,
+			"userId": 1
+		},
+		{
+			"id": 118391337721,
+			"bookId": 588672966624,
+			"text": "This is a great book",
+			"rating": 4,
+			"userId": 1
+		}
+	]
+}

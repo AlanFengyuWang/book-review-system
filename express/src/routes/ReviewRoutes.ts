@@ -10,7 +10,7 @@ import { IReq, IRes } from "./types/express/misc";
  * Get all reviews for a book.
  */
 async function getAllForBook(req: IReq, res: IRes) {
-	const bookId = +req.params.bookId;
+	const bookId = +req.params.id;
 	const reviews = await ReviewService.getAllForBook(bookId);
 	return res.status(HttpStatusCodes.OK).json({ reviews });
 }

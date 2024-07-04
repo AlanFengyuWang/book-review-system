@@ -7,6 +7,7 @@ export interface IReview {
 	text: string;
 	rating: number;
 	bookId: number;
+	userId: number;
 }
 
 // **** Review Functions **** //
@@ -18,13 +19,15 @@ function newReview(
 	text?: string,
 	rating?: number,
 	bookId?: number,
-	id?: number // id last cause usually set by db
+	id?: number, // id last cause usually set by db
+	userId?: number
 ): IReview {
 	return {
 		id: id ?? -1,
 		text: text ?? "",
 		rating: rating ?? 0,
 		bookId: bookId ?? -1,
+		userId: userId ?? -1,
 	};
 }
 
@@ -36,7 +39,7 @@ function reviewFrom(param: object): IReview {
 		throw new Error(INVALID_REVIEW_CONSTRUCTOR_PARAM);
 	}
 	const p = param as IReview;
-	return newReview(p.text, p.rating, p.bookId, p.id, p.created);
+	return newReview(p.text, p.rating, p.bookId, p.id);
 }
 
 /**
@@ -53,7 +56,9 @@ function isReview(arg: unknown): boolean {
 		"rating" in arg &&
 		typeof arg.rating === "number" &&
 		"bookId" in arg &&
-		typeof arg.bookId === "number"
+		typeof arg.bookId === "number" &&
+		"userId" in arg &&
+		typeof arg.userId === "number"
 	);
 }
 

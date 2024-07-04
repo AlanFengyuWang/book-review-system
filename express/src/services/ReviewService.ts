@@ -20,7 +20,12 @@ function getAllForBook(bookId: number): Promise<IReview[]> {
 /**
  * Add one review.
  */
-function addOne(review: IReview): Promise<void> {
+async function addOne(review: IReview): Promise<void> {
+	// Check if the user has already reviewed this book
+  const existingReviews = await ReviewRepo.getAllForBook(review.bookId);
+  if (existingReviews.some(r => r.userId === review.userId)) {
+    throw new RouteError(HttpStatusCodes.BAD_REQUEST, "User has already reviewed this book");
+  }
 	return ReviewRepo.add(review);
 }
 

@@ -1,5 +1,3 @@
-import { IReview } from "./Review";
-
 //  **** Variables **** //
 const INVALID_BOOK_CONSTRUCTOR_PARAM =
 	"titleOrObj arg must be a string or an object " +
@@ -10,7 +8,6 @@ export interface IBook {
 	id: number;
 	title: string;
 	author: string;
-	reviews: IReview[];
 }
 
 // **** Book Functions **** //
@@ -21,14 +18,12 @@ export interface IBook {
 function newBook(
 	title?: string,
 	author?: string,
-	id?: number, // id last cause usually set by db
-	reviews?: IReview[]
+	id?: number // id last cause usually set by db
 ): IBook {
 	return {
 		id: id ?? -1,
 		title: title ?? "",
 		author: author ?? "",
-		reviews: reviews ?? [],
 	};
 }
 
@@ -40,7 +35,7 @@ function bookFrom(param: object): IBook {
 		throw new Error(INVALID_BOOK_CONSTRUCTOR_PARAM);
 	}
 	const p = param as IBook;
-	return newBook(p.title, p.author, p.id, p.reviews);
+	return newBook(p.title, p.author, p.id);
 }
 
 /**
@@ -56,8 +51,7 @@ function isBook(arg: unknown): boolean {
 		"title" in arg &&
 		typeof arg.title === "string" &&
 		"author" in arg &&
-		typeof arg.author === "string" &&
-		(!("reviews" in arg) || Array.isArray((arg as IBook).reviews)) // Make reviews optional
+		typeof arg.author === "string"
 	);
 }
 
