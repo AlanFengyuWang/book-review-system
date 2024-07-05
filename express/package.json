@@ -49,6 +49,7 @@
     "@types/find": "^0.2.4",
     "@types/fs-extra": "^11.0.4",
     "@types/jasmine": "^5.1.4",
+    "@types/jest": "^29.5.12",
     "@types/jsonfile": "^6.1.4",
     "@types/morgan": "^1.9.9",
     "@types/node": "^20.14.9",

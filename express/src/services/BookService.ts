@@ -3,10 +3,7 @@ import HttpStatusCodes from "@src/common/HttpStatusCodes";
 
 import BookRepo from "@src/repos/BookRepo";
 import { IBook } from "@src/models/Book";
-
-// **** Variables **** //
-
-export const BOOK_NOT_FOUND_ERR = "Book not found";
+import { BOOK_NOT_FOUND_ERR } from "./ReviewService";
 
 // **** Functions **** //
 
