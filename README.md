@@ -1,2 +1,2 @@
 # BookReviewSystem
-This is the solution for the technical test from HelloDarling
+A basic book review system that includes react, expressjs and postgreSQL.
