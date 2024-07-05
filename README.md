@@ -55,7 +55,7 @@
     ```sh
     npm test
     ```
-    All test files are located in the `spec/tests` directory. The test suite uses Jasmine and Supertest to ensure the correctness of the backend functionality.
+    All test files are located in the `spec/tests` directory.
 
 ### Seeded User
 
