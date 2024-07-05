@@ -62,5 +62,5 @@
 A seeded user is set up in the frontend and can be configured in `ReviewForm.tsx` by modifying the `userId` variable:
 ```tsx
 const userId = 1;
-
-Finally, I hope you will enjoy!
+```
+Finally, I hope you will enjoy it!
