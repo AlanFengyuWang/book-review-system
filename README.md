@@ -57,5 +57,10 @@
     ```
     All test files are located in the `spec/tests` directory. The test suite uses Jasmine and Supertest to ensure the correctness of the backend functionality.
 
+### Seeded User
+
+A seeded user is set up in the frontend and can be configured in `ReviewForm.tsx` by modifying the `userId` variable:
+```tsx
+const userId = 1;
 
 Finally, I hope you will enjoy!
